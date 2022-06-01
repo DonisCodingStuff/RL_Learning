@@ -39,7 +39,7 @@ CUTOUT_BOTTOM = 30
 CUTOUT_WIDTH = int(round(SCALE_WIDTH * 0.15625,0)*2)
 
 #for ppo
-N_STEPS = 2048
+N_STEPS = 2048*10
 
 REAL_HEIGHT = 70
 REAL_WIDTH = 110
@@ -199,7 +199,7 @@ if CONTINUE == False:
   pass
   #model = PPO('CnnPolicy', env, tensorboard_log=LOG_DIR, verbose=1, learning_rate=0.00001, n_steps=N_STEPS)
   model = DQN('CnnPolicy', env, tensorboard_log=LOG_DIR, verbose=1, learning_rate=0.00001, buffer_size=1000000, optimize_memory_usage=True)
-  model.learn(total_timesteps=9000000, callback=callback, reset_num_timesteps=True, tb_log_name="deathmatch_no_shaping")
+  model.learn(total_timesteps=40000000, callback=callback, reset_num_timesteps=True, tb_log_name="deathmatch_no_shaping")
 elif CONTINUE == True:
   try:
     del model
